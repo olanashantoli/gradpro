@@ -6,17 +6,17 @@ import {
   KeyboardAvoidingView,
   StyleSheet
 } from "react-native";
-
+import {CheckBox } from 'react-native-elements';
 import { Button, Block, Input, Text } from "../components";
 import { theme } from "../constants";
 
 export default class SignUp extends Component {
   state = {
-    email: null,
     username: null,
+    email: null,
+    mobile_phone:null,
     password: null,
     confirm_password: null,
-    mobile_phone:null,
     gender:null,
     errors: [],
     loading: false
@@ -24,7 +24,7 @@ export default class SignUp extends Component {
 
   handleSignUp() {
     const { navigation } = this.props;
-    const { email, username, password, confirm_password ,mobile_phone, gender} = this.state;
+    const { username,email, mobile_phone, password, confirm_password , gender} = this.state;
     const errors = [];
 
     Keyboard.dismiss();
@@ -49,7 +49,7 @@ export default class SignUp extends Component {
           {
             text: "Continue",
             onPress: () => {
-              navigation.navigate("Browse");
+              navigation.navigate("Home");
             }
           }
         ],
@@ -70,6 +70,14 @@ export default class SignUp extends Component {
             Sign Up
           </Text>
           <Block middle>
+          <Input
+              label="Username"
+              error={hasErrors("username")}
+              style={[styles.input, hasErrors("username")]}
+              defaultValue={this.state.username}
+              onChangeText={text => this.setState({ username: text })}
+            />
+
             <Input
               email
               label="Email"
@@ -79,12 +87,13 @@ export default class SignUp extends Component {
               onChangeText={text => this.setState({ email: text })}
             />
             <Input
-              label="Username"
-              error={hasErrors("username")}
-              style={[styles.input, hasErrors("username")]}
-              defaultValue={this.state.username}
-              onChangeText={text => this.setState({ username: text })}
-            />
+            
+            label="mobile_phone"
+            error={hasErrors("mobile_phone")}
+            style={[styles.input, hasErrors("mobile_phone")]}
+            defaultValue={this.state.mobile_phone}
+            onChangeText={text => this.setState({ mobile_phone: text })}
+          /> 
             <Input
               secure
               label="Password"
@@ -101,29 +110,22 @@ export default class SignUp extends Component {
               defaultValue={this.state.confirm_password}
               onChangeText={text => this.setState({ confirm_password: text })}
             />
-             <Input
             
-              label="mobile_phone"
-              error={hasErrors("mobile_phone")}
-              style={[styles.input, hasErrors("mobile_phone")]}
-              defaultValue={this.state.mobile_phone}
-              onChangeText={text => this.setState({ mobile_phone: text })}
-            />
            
            <CheckBox
-  center
-  title='male'
-  checkedIcon='dot-circle-o'
-  uncheckedIcon='circle-o'
-  checked={this.state.checked}
-/>
-<CheckBox
-  center
-  title='female'
-  checkedIcon='dot-circle-o'
-  uncheckedIcon='circle-o'
-  checked={this.state.checked}
-/>
+              center
+              title='male'
+              checkedIcon='dot-circle-o'
+              uncheckedIcon='circle-o'
+              checked={this.state.checked}
+            />
+            <CheckBox
+              center
+              title='female'
+              checkedIcon='dot-circle-o'
+              uncheckedIcon='circle-o'
+              checked={this.state.checked}
+            />
        
             
             <Button gradient onPress={() => this.handleSignUp()}>

@@ -10,7 +10,7 @@ import {
 import { Button, Block, Input, Text } from "../components";
 import { theme } from "../constants";
 
-const VALID_EMAIL = "contact@react-ui-kit.com";
+const VALID_EMAIL = "olahantoli@gmail.com";
 
 export default class Forgot extends Component {
   state = {
@@ -42,7 +42,7 @@ export default class Forgot extends Component {
           {
             text: "OK",
             onPress: () => {
-              navigation.navigate("Login");
+              navigation.navigate("Forgot");
             }
           }
         ],

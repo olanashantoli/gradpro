@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   right: { textAlign: "right" },
   // colors
   accent: { color: theme.colors.accent },
-  primary: { color: theme.colors.primary },
+  primary: { color: theme.colors.red },    //000000000000000              
   secondary: { color: theme.colors.secondary },
   tertiary: { color: theme.colors.tertiary },
   black: { color: theme.colors.black },
