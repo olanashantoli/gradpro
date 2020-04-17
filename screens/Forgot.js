@@ -4,7 +4,8 @@ import {
   ActivityIndicator,
   Keyboard,
   KeyboardAvoidingView,
-  StyleSheet
+  StyleSheet ,
+  TouchableWithoutFeedback
 } from "react-native";
 
 import { Button, Block, Input, Text } from "../components";
@@ -64,6 +65,7 @@ export default class Forgot extends Component {
     const hasErrors = key => (errors.includes(key) ? styles.hasErrors : null);
 
     return (
+      <TouchableWithoutFeedback onpress={()=>{Keyboard.dismiss}}>
       <KeyboardAvoidingView style={styles.forgot} behavior="padding">
         <Block padding={[0, theme.sizes.base * 2]}>
           <Text h1 bold>
@@ -100,6 +102,7 @@ export default class Forgot extends Component {
           </Block>
         </Block>
       </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     );
   }
 }

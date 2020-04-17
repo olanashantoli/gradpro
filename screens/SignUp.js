@@ -1,31 +1,40 @@
 import React, { Component } from "react";
 import {
+  View,
   Alert,
   ActivityIndicator,
   Keyboard,
   KeyboardAvoidingView,
-  StyleSheet
+  StyleSheet ,
+  ScrollView
 } from "react-native";
 import {CheckBox } from 'react-native-elements';
 import { Button, Block, Input, Text } from "../components";
 import { theme } from "../constants";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+
+
 
 export default class SignUp extends Component {
+ 
   state = {
+    
     username: null,
     email: null,
     mobile_phone:null,
     password: null,
     confirm_password: null,
-    gender:null,
+  
     errors: [],
     loading: false
   };
-
+  onPress = gender => this.setState({ gender });
   handleSignUp() {
     const { navigation } = this.props;
-    const { username,email, mobile_phone, password, confirm_password , gender} = this.state;
+    const { username,email, mobile_phone, password, confirm_password } = this.state;
     const errors = [];
+
+   
 
     Keyboard.dismiss();
     this.setState({ loading: true });
@@ -36,12 +45,12 @@ export default class SignUp extends Component {
     if (!password) errors.push("password");
     if (!confirm_password) errors.push("confirm_password");
     if (!mobile_phone) errors.push("mobile_phone");
-    if (!gender) errors.push("gender");
-
+   
 
     this.setState({ errors, loading: false });
 
     if (!errors.length) {
+
       Alert.alert(
         "Success!",
         "Your account has been created",
@@ -62,14 +71,19 @@ export default class SignUp extends Component {
     const { navigation } = this.props;
     const { loading, errors } = this.state;
     const hasErrors = key => (errors.includes(key) ? styles.hasErrors : null);
-
+   
+  
     return (
+   
       <KeyboardAvoidingView style={styles.signup} behavior="padding">
+     
         <Block padding={[0, theme.sizes.base * 2]}>
           <Text h1 bold>
             Sign Up
           </Text>
+
           <Block middle>
+          <ScrollView>
           <Input
               label="Username"
               error={hasErrors("username")}
@@ -111,23 +125,7 @@ export default class SignUp extends Component {
               onChangeText={text => this.setState({ confirm_password: text })}
             />
             
-           
-           <CheckBox
-              center
-              title='male'
-              checkedIcon='dot-circle-o'
-              uncheckedIcon='circle-o'
-              checked={this.state.checked}
-            />
-            <CheckBox
-              center
-              title='female'
-              checkedIcon='dot-circle-o'
-              uncheckedIcon='circle-o'
-              checked={this.state.checked}
-            />
-       
-            
+         
             <Button gradient onPress={() => this.handleSignUp()}>
               {loading ? (
                 <ActivityIndicator size="small" color="white" />
@@ -148,12 +146,18 @@ export default class SignUp extends Component {
                 Back to Login
               </Text>
             </Button>
+            </ScrollView>
           </Block>
+          
         </Block>
+       
       </KeyboardAvoidingView>
+  
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   signup: {
@@ -168,5 +172,6 @@ const styles = StyleSheet.create({
   },
   hasErrors: {
     borderBottomColor: theme.colors.accent
-  }
+  },
+ 
 });

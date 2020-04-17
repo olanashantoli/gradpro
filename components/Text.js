@@ -35,6 +35,7 @@ export default class Typography extends Component {
       secondary,
       tertiary,
       black,
+      red,
       white,
       gray,
       gray2,
@@ -70,6 +71,7 @@ export default class Typography extends Component {
       // color shortcuts
       accent && styles.accent,
       primary && styles.primary,
+      red && styles.red,
       secondary && styles.secondary,
       tertiary && styles.tertiary,
       black && styles.black,
@@ -113,8 +115,9 @@ const styles = StyleSheet.create({
   center: { textAlign: "center" },
   right: { textAlign: "right" },
   // colors
+  red: { color: theme.colors.red },
   accent: { color: theme.colors.accent },
-  primary: { color: theme.colors.red },    //000000000000000              
+  primary: { color: theme.colors.primary },    //000000000000000              
   secondary: { color: theme.colors.secondary },
   tertiary: { color: theme.colors.tertiary },
   black: { color: theme.colors.black },

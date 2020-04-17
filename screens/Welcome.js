@@ -88,10 +88,11 @@ class Welcome extends Component {
       <Block>
         <Block center bottom flex={0.4}>
           <Text h1 center bold>
-          RoadSide Assistance  
-            <Text h1 primary>
-              {" "}
-               Sallikna.
+          RoadSide <Text h1 center bold style={styles.black}> Assistance  </Text>
+            <Text h1  style={styles.red}>
+              {"  \n"}
+              Sallikna
+               {"\n"}
             </Text>
           </Text>
          
@@ -129,6 +130,7 @@ Welcome.defaultProps = {
 
 export default Welcome;
 
+
 const styles = StyleSheet.create({
   stepsContainer: {
     position: "absolute",
@@ -141,5 +143,14 @@ const styles = StyleSheet.create({
     height: 5,
     borderRadius: 5,
     marginHorizontal: 2.5
-  }
+  },
+  red: {
+    color: 'red'
+  },
+  black: {
+    color: 'black'
+  },
+  green: {
+    color: 'green'
+  },
 });
